@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 
 // Constants
 const CUSTOM_CURSOR_STYLE = {
@@ -1119,6 +1120,7 @@ function App() {
         <FinalCTASection />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
