@@ -19,7 +19,7 @@ const PRICING_PLANS = [
       'Text-only support',
       'Standard support'
     ],
-    buttonText: 'Start Free Trial',
+    buttonText: 'Try Your Manual Now',
     buttonStyle: 'bg-gray-600 text-white hover:bg-gray-700',
     cardStyle: 'bg-gray-100/50 backdrop-blur-sm border border-gray-300',
     isPopular: false,
@@ -38,7 +38,7 @@ const PRICING_PLANS = [
       'Advanced analytics',
       'Priority support'
     ],
-    buttonText: 'Start Free Trial',
+    buttonText: 'Try Your Manual Now',
     buttonStyle: 'bg-blue-600 text-white hover:bg-blue-500',
     cardStyle: 'bg-gradient-to-b from-blue-600/20 to-blue-800/20 backdrop-blur-sm border border-blue-500 transform scale-105',
     isPopular: true,
@@ -57,7 +57,7 @@ const PRICING_PLANS = [
       'Custom SLAs',
       'Priority support & success manager'
     ],
-    buttonText: 'Get Started Today',
+    buttonText: 'Scale Your Support',
     buttonStyle: 'bg-gray-600 text-white hover:bg-gray-700',
     cardStyle: 'bg-gray-100/50 backdrop-blur-sm border border-gray-300',
     isPopular: false,
@@ -294,7 +294,7 @@ const HeroSection = () => (
         </h1>
         <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.1)' }}>
-            Answer customer questions from manuals, PDFs, and screenshots — instantly.
+            Cut repetitive support tickets by 70% without hiring more agents.
           </p>
         </div>
 
@@ -304,7 +304,7 @@ const HeroSection = () => (
             style={{ boxShadow: '0 0 30px rgba(37, 99, 235, 0.7)' }}
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
-            Start Free Trial
+            Upload Your Docs, Be Live Tomorrow
           </button>
           <p className="text-xs sm:text-sm text-gray-600">no credit card required</p>
         </div>
@@ -316,25 +316,25 @@ const HeroSection = () => (
 );
 
 const HowItWorksSection = () => (
-  <section id="how-it-works" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50">
+  <section id="how-it-works" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50" aria-labelledby="how-it-works-title">
     <div className="max-w-6xl mx-auto text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-8">How It Works</h2>
+      <h2 id="how-it-works-title" className="text-2xl sm:text-3xl md:text-4xl font-light mb-8">How Snap Question Works</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-left">
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium mb-1">1. Upload your knowledge</div>
-          <div className="text-gray-700 text-sm">Drop in PDFs, manuals, product guides, and sample screenshots.</div>
+          <h3 className="text-gray-900 font-medium mb-1">1. Upload your knowledge</h3>
+          <p className="text-gray-700 text-sm">Drop in PDFs, manuals, product guides, and sample screenshots.</p>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium mb-1">2. Connect your channels</div>
-          <div className="text-gray-700 text-sm">Add our widget to your site or plug into Zendesk, Intercom, Slack, or email.</div>
+          <h3 className="text-gray-900 font-medium mb-1">2. Connect your channels</h3>
+          <p className="text-gray-700 text-sm">Add our widget to your site or plug into Zendesk, Intercom, Slack, or email.</p>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium mb-1">3. Let AI handle the routine</div>
-          <div className="text-gray-700 text-sm">Customers type a question or upload a photo → AI finds the answer from your own content.</div>
+          <h3 className="text-gray-900 font-medium mb-1">3. Let AI handle the routine</h3>
+          <p className="text-gray-700 text-sm">Customers type a question or upload a photo and AI finds the answer from your own content.</p>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium mb-1">4. Escalate when needed</div>
-          <div className="text-gray-700 text-sm">If AI can't answer, it routes the ticket (with context) to your human agents.</div>
+          <h3 className="text-gray-900 font-medium mb-1">4. Escalate when needed</h3>
+          <p className="text-gray-700 text-sm">If AI can't answer, it routes the ticket (with context) to your human agents.</p>
         </div>
       </div>
     </div>
@@ -343,27 +343,22 @@ const HowItWorksSection = () => (
 
 const BenefitsSection = () => (
   <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
-    <div className="max-w-6xl mx-auto text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">Key Benefits</h2>
-      <p className="text-gray-700 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
-        Stop wasting time on repetitive questions. <span className="text-gray-900 font-medium">Let AI handle the routine so your team can focus on what matters.</span>
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-left">
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-gray-900 font-medium mb-1">Faster responses</div>
-          <div className="text-gray-700 text-sm">deflect up to 70% of tickets.</div>
+    <div className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <div className="text-3xl font-bold text-blue-600 mb-2">70%</div>
+          <div className="text-gray-900 font-medium mb-1">Deflect tickets with AI</div>
+          <div className="text-gray-600 text-sm">trained on your docs</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-gray-900 font-medium mb-1">Smarter answers</div>
-          <div className="text-gray-700 text-sm">AI understands text and images.</div>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <div className="text-3xl font-bold text-blue-600 mb-2">5 sec</div>
+          <div className="text-gray-900 font-medium mb-1">Answer text & screenshots</div>
+          <div className="text-gray-600 text-sm">in seconds, not hours</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-gray-900 font-medium mb-1">Seamless integration</div>
-          <div className="text-gray-700 text-sm">works with your existing tools.</div>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
-          <div className="text-gray-900 font-medium mb-1">Zero setup headaches</div>
-          <div className="text-gray-700 text-sm">go live in a day.</div>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <div className="text-3xl font-bold text-blue-600 mb-2">24 hrs</div>
+          <div className="text-gray-900 font-medium mb-1">Go live in under 24 hours</div>
+          <div className="text-gray-600 text-sm">no complex setup</div>
         </div>
       </div>
     </div>
@@ -371,20 +366,20 @@ const BenefitsSection = () => (
 );
 
 const AudienceSection = () => (
-  <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50">
+  <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50" aria-labelledby="audience-title">
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-center mb-8">Who It's For</h2>
+      <h2 id="audience-title" className="text-2xl sm:text-3xl md:text-4xl font-light text-center mb-8">Who Snap Question Is For</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium">Field service companies</div>
+          <h3 className="text-gray-900 font-medium">Field service companies</h3>
           <div className="text-gray-700 text-sm">HVAC, generators, commercial kitchens</div>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium">Industrial/parts distributors</div>
+          <h3 className="text-gray-900 font-medium">Industrial/parts distributors</h3>
           <div className="text-gray-700 text-sm">Complex product catalogs and technical specifications</div>
         </div>
         <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <div className="text-gray-900 font-medium">Complex B2B SaaS teams</div>
+          <h3 className="text-gray-900 font-medium">Complex B2B SaaS teams</h3>
           <div className="text-gray-700 text-sm">Multi-feature platforms with extensive documentation</div>
         </div>
       </div>
@@ -467,13 +462,13 @@ const PricingCard = ({ plan, billingCycle }) => (
       </ul>
       {plan.isAvailable ? (
         <button 
-          className={`w-full px-4 sm:px-6 py-2.5 sm:py-3 md:py-2 rounded-full text-xs sm:text-sm transition-colors ${plan.buttonStyle} font-medium`}
+          className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 md:py-2 rounded-full text-xs sm:text-sm transition-colors ${plan.buttonStyle} font-medium whitespace-nowrap`}
           style={plan.isPopular ? { boxShadow: '0 0 20px rgba(37, 99, 235, 0.5)' } : {}}
         >
           {plan.buttonText}
         </button>
       ) : (
-        <div className={`w-full px-4 sm:px-6 py-2.5 sm:py-3 md:py-2 rounded-full text-xs sm:text-sm text-center font-medium ${plan.buttonStyle}`}>
+        <div className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 md:py-2 rounded-full text-xs sm:text-sm text-center font-medium ${plan.buttonStyle} whitespace-nowrap`}>
           {plan.buttonText}
         </div>
       )}
@@ -575,12 +570,12 @@ const ProductDemoSection = () => {
   };
 
   return (
-    <section id="demo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50">
+    <section id="demo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50" aria-labelledby="demo-title">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">See It In Action</h2>
-          <p className="text-gray-700 max-w-3xl mx-auto">
-            Watch how Snap Question instantly resolves customer questions using your own documentation
+          <h2 id="demo-title" className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">Watch the Magic ✨</h2>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            Customer uploads screenshot, AI finds answer in your docs, ticket resolved
           </p>
         </div>
 
@@ -976,10 +971,10 @@ const ContactFormSection = () => {
             <div className="text-center pt-4">
               <button
                 type="submit"
-                className="px-8 py-4 bg-blue-600 text-white rounded-full text-lg hover:bg-blue-500 transition-colors font-medium shadow-lg"
+                className="px-6 py-4 bg-blue-600 text-white rounded-full text-base hover:bg-blue-500 transition-colors font-medium shadow-lg whitespace-nowrap"
                 style={{ boxShadow: '0 0 30px rgba(37, 99, 235, 0.7)' }}
               >
-                Schedule Demo
+                Book Your Demo Call
               </button>
               <p className="text-sm text-gray-600 mt-3">
                 We'll reach out within 24 hours to schedule your personalized demo
@@ -1002,10 +997,10 @@ const FinalCTASection = () => (
         Let AI handle the routine so your team can focus on what matters.
       </p>
       <button 
-        className="px-8 py-4 bg-white text-blue-600 rounded-full text-lg hover:bg-gray-100 transition-colors font-medium shadow-lg"
+        className="px-6 py-4 bg-white text-blue-600 rounded-full text-base hover:bg-gray-100 transition-colors font-medium shadow-lg whitespace-nowrap"
         style={{ boxShadow: '0 0 30px rgba(255, 255, 255, 0.7)' }}
       >
-        Get Started Today
+        Try Your Manual Now
       </button>
     </div>
   </section>
@@ -1113,14 +1108,16 @@ function App() {
     <div className="min-h-screen bg-white text-gray-900 relative overflow-x-hidden" style={CUSTOM_CURSOR_STYLE}>
       <FloatingAnimationStyles />
       <Header />
-      <HeroSection />
-      <BenefitsSection />
-      <AudienceSection />
-      <HowItWorksSection />
-      <PricingSection />
-      <ProductDemoSection />
-      <ContactFormSection />
-      <FinalCTASection />
+      <main role="main">
+        <HeroSection />
+        <ProductDemoSection />
+        <BenefitsSection />
+        <AudienceSection />
+        <HowItWorksSection />
+        <PricingSection />
+        <ContactFormSection />
+        <FinalCTASection />
+      </main>
       <Footer />
     </div>
   );
