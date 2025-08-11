@@ -118,12 +118,10 @@ const scrollToPricing = (e) => {
   document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
 };
 
-// Utility functions
-const ArrowDots = ({ size = 'w-1 h-1', color = 'bg-gray-900' }) => (
-  <div className="flex items-center justify-center w-6 h-6 relative">
-    <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 ${size} ${color} rounded-full`}></div>
-    <div className={`absolute bottom-0 left-0 ${size} ${color} rounded-full`}></div>
-    <div className={`absolute bottom-0 right-0 ${size} ${color} rounded-full`}></div>
+// Utility functions - SQ logo
+const ArrowDots = ({ size = 'text-xs', color = 'text-gray-900' }) => (
+  <div className={`${size} ${color} font-bold bg-gray-200/50 backdrop-blur-sm rounded-full w-6 h-6 flex items-center justify-center`}>
+    SQ
   </div>
 );
 
@@ -180,66 +178,119 @@ const FloatingElement = ({ element }) => (
   </div>
 );
 
-const Header = () => (
-  <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6">
-    <div className="flex items-center justify-between">
-      {/* Mobile Logo */}
-      <div className="flex items-center space-x-2 md:hidden">
-        <span className="text-lg font-medium text-gray-900">SQ</span>
-      </div>
-      
-      {/* Desktop Logo */}
-      <div className="hidden md:flex items-center space-x-2">
-        <span className="text-xl font-medium tracking-[0.2em] text-gray-900">S N A P  Q U E S T I O N</span>
+const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
+        {/* Mobile Logo */}
+        <div className="md:hidden bg-gray-200/50 backdrop-blur-sm rounded-full px-4 py-2">
+          <span className="text-sm font-medium text-gray-900">S N A P Q U E S T I O N</span>
+        </div>
+        
+        {/* Desktop Logo */}
+        <div className="hidden md:flex items-center space-x-2 bg-gray-200/50 backdrop-blur-sm rounded-full px-6 py-2">
+          <span className="text-lg font-medium tracking-[0.15em] text-gray-900">S N A P Q U E S T I O N</span>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2.5 rounded-full bg-gray-200/50 backdrop-blur-sm text-gray-900"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div 
+          className="hidden md:flex bg-gray-200/50 backdrop-blur-sm rounded-full px-8 py-3 items-center space-x-8"
+          style={{
+            animation: 'navFloat2 8s ease-in-out infinite',
+            animationDelay: '1s'
+          }}
+        >
+          <ArrowDots />
+          <a href="#demo" className="text-gray-700 hover:text-gray-900 transition-colors">Demo</a>
+          <a href="#how-it-works" className="text-gray-700 hover:text-gray-900 transition-colors">How It Works</a>
+          <a href="#pricing" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={scrollToPricing}>Pricing</a>
+          <button 
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-500 transition-colors"
+          >
+            Get Started
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div 
-        className="md:hidden bg-gray-200/50 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2"
-        style={{
-          animation: 'navFloat1 6s ease-in-out infinite',
-          animationDelay: '0s'
-        }}
-      >
-        <ArrowDots size="w-1 h-1" />
-        <button className="px-3 py-1 bg-blue-600 text-white rounded-full text-xs hover:bg-blue-500 transition-colors">
-          Start Free Trial
-        </button>
-      </div>
-
-      {/* Desktop Navigation */}
-      <div 
-        className="hidden md:flex bg-gray-200/50 backdrop-blur-sm rounded-full px-8 py-3 items-center space-x-8"
-        style={{
-          animation: 'navFloat2 8s ease-in-out infinite',
-          animationDelay: '1s'
-        }}
-      >
-        <ArrowDots />
-        <a href="#how-it-works" className="text-gray-700 hover:text-gray-900 transition-colors">How It Works</a>
-        <a href="#pricing" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={scrollToPricing}>Pricing</a>
-        <a href="#about" className="text-gray-700 hover:text-gray-900 transition-colors">About</a>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-500 transition-colors">
-          Start Free Trial
-        </button>
-      </div>
-    </div>
-  </header>
-);
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
+          <div className="px-6 py-6 space-y-2">
+            <a 
+              href="#demo" 
+              className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all py-3 px-4 rounded-xl"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Demo
+            </a>
+            <a 
+              href="#how-it-works" 
+              className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all py-3 px-4 rounded-xl"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              How It Works
+            </a>
+            <a 
+              href="#pricing" 
+              className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all py-3 px-4 rounded-xl"
+              onClick={(e) => { 
+                scrollToPricing(e); 
+                setMobileMenuOpen(false); 
+              }}
+            >
+              Pricing
+            </a>
+            <div className="pt-2 mt-2 border-t border-gray-200">
+              <button 
+                onClick={() => {
+                  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full px-4 py-3 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-500 transition-colors font-medium"
+              >
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
 
 const HeroSection = () => (
-  <section className="min-h-[75vh] sm:min-h-[85vh] md:min-h-screen pt-20 sm:pt-28 md:pt-32 pb-4 sm:pb-8 md:pb-16 px-4 sm:px-6 md:px-8 relative">
+  <section className="min-h-[90vh] sm:min-h-[85vh] md:min-h-screen pt-24 sm:pt-28 md:pt-32 pb-4 sm:pb-8 md:pb-16 px-4 sm:px-6 md:px-8 relative">
     <div className="max-w-7xl mx-auto relative">
       {FLOATING_ELEMENTS.map(element => (
         <FloatingElement key={element.id} element={element} />
       ))}
 
-      <div className="text-center z-30 relative pt-16 sm:pt-24 md:pt-40">
-        <p className="text-gray-900 text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 px-4" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
-          SNAP QUESTION
+      <div className="text-center z-30 relative pt-12 sm:pt-24 md:pt-40">
+        <p className="text-gray-900 text-xs sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 px-4 font-medium tracking-wider" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
+          S N A P Q U E S T I O N
         </p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-4 sm:mb-6 lg:mb-8 px-2" style={{ textShadow: '0 0 40px rgba(0, 0, 0, 0.1)' }}>
-          Your Support Team, Supercharged by AI
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-4 sm:mb-6 lg:mb-8 px-2 leading-tight" style={{ textShadow: '0 0 40px rgba(0, 0, 0, 0.1)' }}>
+          Your Support Team, <br className="sm:hidden" />
+          Supercharged by AI
         </h1>
         <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.1)' }}>
@@ -247,14 +298,15 @@ const HeroSection = () => (
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 px-4">
+        <div className="flex flex-col items-center justify-center space-y-3 px-4">
           <button 
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-full text-base sm:text-lg hover:bg-blue-500 transition-colors font-medium" 
+            className="w-full max-w-xs sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-full text-base sm:text-lg hover:bg-blue-500 transition-colors font-medium" 
             style={{ boxShadow: '0 0 30px rgba(37, 99, 235, 0.7)' }}
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             Start Free Trial
           </button>
-          <p className="text-sm text-gray-600">no credit card required</p>
+          <p className="text-xs sm:text-sm text-gray-600">no credit card required</p>
         </div>
       </div>
 
@@ -473,20 +525,472 @@ const PricingSection = () => {
   );
 };
 
-const SocialProofSection = () => (
-  <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white">
-    <div className="max-w-4xl mx-auto text-center">
-      <div className="bg-gray-50 border border-gray-200 p-8 rounded-2xl">
-        <p className="text-xl text-gray-700 mb-6 italic">
-          "We cut our support ticket volume by 40% in the first month. Setup took one afternoon."
-        </p>
-        <div className="text-gray-600">
-          <strong>Customer Name</strong>, Company
+const ProductDemoSection = () => {
+  const [currentStep, setCurrentStep] = useState('question');
+  const [chatMessages, setChatMessages] = useState([
+    {
+      type: 'user',
+      message: "My HVAC unit isn't cooling properly. The compressor seems to be running but no cold air is coming out.",
+      timestamp: '2:34 PM'
+    }
+  ]);
+
+  const demoSteps = {
+    question: {
+      title: 'Customer Question',
+      description: 'Customer submits question via widget, email, or uploads a photo'
+    },
+    processing: {
+      title: 'AI Processing',
+      description: 'AI searches through your knowledge base and manuals'
+    },
+    response: {
+      title: 'Instant Response',
+      description: 'AI provides detailed answer with relevant manual sections'
+    }
+  };
+
+  const handleDemoStep = (step) => {
+    setCurrentStep(step);
+    if (step === 'processing') {
+      setTimeout(() => setCurrentStep('response'), 2000);
+    }
+    if (step === 'response') {
+      setChatMessages([
+        ...chatMessages,
+        {
+          type: 'ai',
+          message: 'I found the solution in your HVAC manual. This sounds like a refrigerant issue or a blocked evaporator coil.',
+          timestamp: '2:34 PM',
+          source: 'HVAC_Manual_Section_4.2.pdf',
+          confidence: '94%',
+          suggestions: [
+            'Check refrigerant levels',
+            'Inspect evaporator coils for ice buildup',
+            'Verify thermostat settings'
+          ]
+        }
+      ]);
+    }
+  };
+
+  return (
+    <section id="demo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">See It In Action</h2>
+          <p className="text-gray-700 max-w-3xl mx-auto">
+            Watch how Snap Question instantly resolves customer questions using your own documentation
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Demo Widget */}
+          <div className="order-2 lg:order-1">
+            <div className="bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
+              {/* Widget Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 sm:px-6 py-4 text-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                      <span className="text-sm font-medium">SQ</span>
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-sm sm:text-base">S N A P Q U E S T I O N</h3>
+                      <p className="text-xs text-blue-100">AI Support Assistant</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span className="text-xs text-blue-100">Online</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chat Messages */}
+              <div className="h-64 sm:h-80 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                {chatMessages.map((msg, index) => (
+                  <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <div className={`max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm ${
+                      msg.type === 'user' 
+                        ? 'bg-blue-600 text-white rounded-l-xl rounded-tr-xl' 
+                        : 'bg-white border border-gray-200 text-gray-900 rounded-r-xl rounded-tl-xl shadow-sm'
+                    } px-3 sm:px-4 py-2 sm:py-3`}>
+                      <p className="text-xs sm:text-sm leading-relaxed">{msg.message}</p>
+                      {msg.type === 'ai' && msg.source && (
+                        <div className="mt-2 pt-2 border-t border-gray-100">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-gray-500">Source: {msg.source}</span>
+                            <span className="text-green-600 font-medium">{msg.confidence}</span>
+                          </div>
+                          {msg.suggestions && (
+                            <div className="mt-2">
+                              <p className="text-xs font-medium text-gray-700 mb-1">Next Steps:</p>
+                              <ul className="space-y-1">
+                                {msg.suggestions.map((suggestion, i) => (
+                                  <li key={i} className="text-xs text-gray-600 flex items-start">
+                                    <span className="w-1 h-1 bg-blue-500 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
+                                    {suggestion}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      <div className="text-xs opacity-75 mt-1">{msg.timestamp}</div>
+                    </div>
+                  </div>
+                ))}
+                
+                {currentStep === 'processing' && (
+                  <div className="flex justify-start">
+                    <div className="bg-white border border-gray-200 rounded-r-xl rounded-tl-xl px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+                      <div className="flex items-center space-x-2">
+                        <div className="flex space-x-1">
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        </div>
+                        <span className="text-xs text-gray-500">AI is searching your knowledge base...</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Input Area */}
+              <div className="border-t border-gray-200 p-3 sm:p-4 bg-white">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <input
+                    type="text"
+                    placeholder="Type your question or upload an image..."
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    disabled
+                  />
+                  <button className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                    </svg>
+                  </button>
+                  <button className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Demo Controls */}
+          <div className="order-1 lg:order-2">
+            <div className="space-y-6">
+              {Object.entries(demoSteps).map(([key, step], index) => (
+                <div
+                  key={key}
+                  className={`p-4 sm:p-6 rounded-xl border-2 transition-all cursor-pointer ${
+                    currentStep === key 
+                      ? 'bg-blue-50 border-blue-500 shadow-md' 
+                      : 'bg-white border-gray-200 hover:border-gray-300'
+                  }`}
+                  onClick={() => handleDemoStep(key)}
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                      currentStep === key 
+                        ? 'bg-blue-600 text-white' 
+                        : 'bg-gray-200 text-gray-600'
+                    }`}>
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-medium text-gray-900 mb-2">{step.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 p-4 sm:p-6 bg-gray-100/50 backdrop-blur-sm border border-gray-200 rounded-xl">
+              <h4 className="font-medium text-gray-900 mb-3">Key Features</h4>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Understands text and image queries</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Sources answers from your documents</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Shows confidence scores</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Escalates complex issues</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
+const ContactFormSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    role: '',
+    companySize: '',
+    currentTicketVolume: '',
+    primaryChallenge: '',
+    interestedIntegrations: [],
+    timeline: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setFormData(prev => ({
+        ...prev,
+        interestedIntegrations: checked 
+          ? [...prev.interestedIntegrations, value]
+          : prev.interestedIntegrations.filter(item => item !== value)
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Form submitted:', formData);
+    alert('Thank you! We\'ll be in touch soon to schedule a demo.');
+  };
+
+  return (
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">Get Started</h2>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            Tell us about your support challenges so we can show you exactly how Snap Question can help.
+          </p>
+        </div>
+        
+        <div className="bg-gray-50/50 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 sm:p-8 md:p-10">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                  placeholder="John Smith"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+                  Work Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                  placeholder="john@company.com"
+                />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-900 mb-2">
+                  Company Name *
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  required
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                  placeholder="Acme Corp"
+                />
+              </div>
+              <div>
+                <label htmlFor="role" className="block text-sm font-medium text-gray-900 mb-2">
+                  Your Role *
+                </label>
+                <select
+                  id="role"
+                  name="role"
+                  required
+                  value={formData.role}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                >
+                  <option value="">Select your role</option>
+                  <option value="ceo">CEO/Founder</option>
+                  <option value="cto">CTO</option>
+                  <option value="support-manager">Support Manager</option>
+                  <option value="customer-success">Customer Success</option>
+                  <option value="operations">Operations</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <label htmlFor="companySize" className="block text-sm font-medium text-gray-900 mb-2">
+                  Company Size *
+                </label>
+                <select
+                  id="companySize"
+                  name="companySize"
+                  required
+                  value={formData.companySize}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                >
+                  <option value="">Select company size</option>
+                  <option value="1-10">1-10 employees</option>
+                  <option value="11-50">11-50 employees</option>
+                  <option value="51-200">51-200 employees</option>
+                  <option value="201-500">201-500 employees</option>
+                  <option value="500+">500+ employees</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="currentTicketVolume" className="block text-sm font-medium text-gray-900 mb-2">
+                  Monthly Support Tickets *
+                </label>
+                <select
+                  id="currentTicketVolume"
+                  name="currentTicketVolume"
+                  required
+                  value={formData.currentTicketVolume}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                >
+                  <option value="">Select ticket volume</option>
+                  <option value="<100">Less than 100</option>
+                  <option value="100-500">100-500</option>
+                  <option value="500-1000">500-1,000</option>
+                  <option value="1000-5000">1,000-5,000</option>
+                  <option value="5000+">5,000+</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="primaryChallenge" className="block text-sm font-medium text-gray-900 mb-2">
+                Primary Support Challenge *
+              </label>
+              <select
+                id="primaryChallenge"
+                name="primaryChallenge"
+                required
+                value={formData.primaryChallenge}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+              >
+                <option value="">Select your biggest challenge</option>
+                <option value="repetitive-questions">Too many repetitive questions</option>
+                <option value="slow-response-times">Slow response times</option>
+                <option value="complex-product-docs">Complex product documentation</option>
+                <option value="image-based-support">Customers sending screenshots/photos</option>
+                <option value="scaling-support-team">Scaling support team</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-900 mb-3">
+                Interested Integrations (check all that apply)
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {['Zendesk', 'Intercom', 'Slack', 'Email', 'Website Widget', 'API'].map((integration) => (
+                  <label key={integration} className="flex items-center space-x-2 text-sm">
+                    <input
+                      type="checkbox"
+                      name="interestedIntegrations"
+                      value={integration}
+                      checked={formData.interestedIntegrations.includes(integration)}
+                      onChange={handleInputChange}
+                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span className="text-gray-700">{integration}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="timeline" className="block text-sm font-medium text-gray-900 mb-2">
+                Implementation Timeline
+              </label>
+              <select
+                id="timeline"
+                name="timeline"
+                value={formData.timeline}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+              >
+                <option value="">Select timeline</option>
+                <option value="asap">As soon as possible</option>
+                <option value="1-3-months">1-3 months</option>
+                <option value="3-6-months">3-6 months</option>
+                <option value="6-12-months">6-12 months</option>
+                <option value="just-exploring">Just exploring</option>
+              </select>
+            </div>
+            
+            <div className="text-center pt-4">
+              <button
+                type="submit"
+                className="px-8 py-4 bg-blue-600 text-white rounded-full text-lg hover:bg-blue-500 transition-colors font-medium shadow-lg"
+                style={{ boxShadow: '0 0 30px rgba(37, 99, 235, 0.7)' }}
+              >
+                Schedule Demo
+              </button>
+              <p className="text-sm text-gray-600 mt-3">
+                We'll reach out within 24 hours to schedule your personalized demo
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const FinalCTASection = () => (
   <section className="py-20 px-4 sm:px-6 md:px-8 bg-blue-600 text-white">
@@ -515,7 +1019,7 @@ const Footer = () => (
           <ArrowDots size="w-1.5 h-1.5" />
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 sm:mb-6 md:mb-8 leading-tight px-2">
-          SNAP QUESTION is the solution<br />
+          S N A P Q U E S T I O N is the solution<br />
           you've been searching for.
         </h2>
       </div>
@@ -524,7 +1028,7 @@ const Footer = () => (
         <div className="flex flex-col space-y-6">
           <div className="flex items-center space-x-3">
             <ArrowDots size="w-1.5 h-1.5" />
-            <span className="text-lg font-medium text-gray-900">SNAP QUESTION</span>
+            <span className="text-lg font-medium text-gray-900">S N A P Q U E S T I O N</span>
           </div>
         </div>
 
@@ -560,7 +1064,7 @@ const Footer = () => (
 
     <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
       <div className="text-[20rem] md:text-[25rem] font-bold text-gray-200/30 leading-none whitespace-nowrap transform translate-y-1/3">
-        SNAP QUESTION
+        S N A P Q U E S T I O N
       </div>
     </div>
   </footer>
@@ -614,7 +1118,8 @@ function App() {
       <AudienceSection />
       <HowItWorksSection />
       <PricingSection />
-      <SocialProofSection />
+      <ProductDemoSection />
+      <ContactFormSection />
       <FinalCTASection />
       <Footer />
     </div>
