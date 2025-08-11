@@ -279,13 +279,13 @@ const Header = () => {
 };
 
 const HeroSection = () => (
-  <section className="min-h-[90vh] sm:min-h-[85vh] md:min-h-screen pt-24 sm:pt-28 md:pt-32 pb-4 sm:pb-8 md:pb-16 px-4 sm:px-6 md:px-8 relative">
+  <section className="pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6 md:px-8 relative md:min-h-screen">
     <div className="max-w-7xl mx-auto relative">
       {FLOATING_ELEMENTS.map(element => (
         <FloatingElement key={element.id} element={element} />
       ))}
 
-      <div className="text-center z-30 relative pt-12 sm:pt-24 md:pt-40">
+      <div className="text-center z-30 relative pt-8 sm:pt-16 md:pt-40">
         <p className="text-gray-900 text-xs sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 px-4 font-medium tracking-wider" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           S N A P Q U E S T I O N
         </p>
@@ -582,7 +582,7 @@ const ProductDemoSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Demo Widget */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <div className="bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
               {/* Widget Header */}
               <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 sm:px-6 py-4 text-white">
@@ -680,20 +680,20 @@ const ProductDemoSection = () => {
           </div>
 
           {/* Demo Controls */}
-          <div className="order-1 lg:order-2">
-            <div className="space-y-6">
+          <div className="order-2 lg:order-2">
+            <div className="space-y-3 lg:space-y-6">
               {Object.entries(demoSteps).map(([key, step], index) => (
                 <div
                   key={key}
-                  className={`p-4 sm:p-6 rounded-xl border-2 transition-all cursor-pointer ${
+                  className={`p-3 lg:p-6 rounded-lg lg:rounded-xl border lg:border-2 transition-all cursor-pointer ${
                     currentStep === key 
                       ? 'bg-blue-50 border-blue-500 shadow-md' 
                       : 'bg-white border-gray-200 hover:border-gray-300'
                   }`}
                   onClick={() => handleDemoStep(key)}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <div className={`w-6 h-6 lg:w-8 lg:h-8 rounded-full flex items-center justify-center text-xs lg:text-sm font-medium ${
                       currentStep === key 
                         ? 'bg-blue-600 text-white' 
                         : 'bg-gray-200 text-gray-600'
@@ -701,8 +701,8 @@ const ProductDemoSection = () => {
                       {index + 1}
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium text-gray-900 mb-2">{step.title}</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+                      <h3 className="font-medium text-gray-900 mb-1 lg:mb-2 text-sm lg:text-base">{step.title}</h3>
+                      <p className="text-xs lg:text-sm text-gray-600 leading-relaxed">{step.description}</p>
                     </div>
                   </div>
                 </div>
