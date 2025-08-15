@@ -1,0 +1,88 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.coverage
+.coverage.*
+.pytest_cache/
+htmlcov/
+
+# Production builds
+/snap-question/build/
+/widget/dist/
+*.min.js
+*.min.css
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+.tmp/
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Python
+*.py[cod]
+*$py.class
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# React
+.pnp
+.pnp.js
+
+# Misc
+.sass-cache/
+*.css.map
+*.js.map
