@@ -10,14 +10,14 @@ const PRICING_PLANS = [
   {
     id: 'starter',
     name: 'Starter',
-    monthlyPrice: 199,
-    yearlyPrice: 2148, // 10% off annually
+    monthlyPrice: 179,
+    yearlyPrice: 1933, // 10% off annually
     storage: '1,000 resolutions/month',
-    description: 'Perfect for getting started',
+    description: 'Perfect for small teams',
     features: [
-      'Widget + email triage',
+      'Website + email support',
+      'Text answers',
       'Basic AI responses',
-      'Text-only support',
       'Standard support'
     ],
     buttonText: 'Try Your Manual Now',
@@ -29,12 +29,12 @@ const PRICING_PLANS = [
   {
     id: 'pro',
     name: 'Pro',
-    monthlyPrice: 499,
-    yearlyPrice: 5390, // 10% off annually  
+    monthlyPrice: 449,
+    yearlyPrice: 4849, // 10% off annually  
     storage: '10,000 resolutions/month',
-    description: 'Most Popular - for growing teams',
+    description: 'Most Popular',
     features: [
-      'Screenshot/photo support',
+      'Photo/screenshot support',
       'All integrations (Zendesk, Intercom, Slack)',
       'Advanced analytics',
       'Priority support'
@@ -53,8 +53,8 @@ const PRICING_PLANS = [
     storage: 'Custom limits',
     description: 'For enterprise teams',
     features: [
-      'White-label options',
-      'SSO integration',
+      'White-label',
+      'SSO + enterprise integrations',
       'Custom SLAs',
       'Priority support & success manager'
     ],
@@ -286,28 +286,29 @@ const HeroSection = () => (
       ))}
 
       <div className="text-center z-30 relative pt-8 sm:pt-16 md:pt-40">
-        <p className="text-gray-900 text-xs sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 px-4 font-medium tracking-wider" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
-          S N A P Q U E S T I O N
-        </p>
         <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-4 sm:mb-6 lg:mb-8 px-2 leading-tight" style={{ textShadow: '0 0 40px rgba(0, 0, 0, 0.1)' }}>
-          Your Support Team, <br className="sm:hidden" />
-          Supercharged by AI
+          Cut Service Calls by 70% Without Adding Headcount
         </h1>
         <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.1)' }}>
-            Cut repetitive support tickets by 70% without hiring more agents.
+            Transform your manuals and guides into a 24/7 AI technician that answers HVAC, generator, and equipment questions instantly.
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-center space-y-3 px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 px-4">
           <button 
             className="w-full max-w-xs sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-full text-base sm:text-lg hover:bg-blue-500 transition-colors font-medium" 
             style={{ boxShadow: '0 0 30px rgba(37, 99, 235, 0.7)' }}
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
-            Upload Your Docs, Be Live Tomorrow
+            Book a Demo
           </button>
-          <p className="text-xs sm:text-sm text-gray-600">no credit card required</p>
+          <button 
+            className="w-full max-w-xs sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-blue-600 hover:text-blue-500 transition-colors font-medium underline decoration-2 underline-offset-4 hover:decoration-blue-400"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+          >
+            Try Your Manual Now →
+          </button>
         </div>
       </div>
 
@@ -317,25 +318,25 @@ const HeroSection = () => (
 );
 
 const HowItWorksSection = () => (
-  <section id="how-it-works" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50" aria-labelledby="how-it-works-title">
+  <section id="how-it-works" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-blue-50" aria-labelledby="how-it-works-title">
     <div className="max-w-6xl mx-auto text-center">
-      <h2 id="how-it-works-title" className="text-2xl sm:text-3xl md:text-4xl font-light mb-8">How Snap Question Works</h2>
+      <h2 id="how-it-works-title" className="text-2xl sm:text-3xl md:text-4xl font-light mb-8">How It Works</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-left">
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium mb-1">1. Upload your knowledge</h3>
-          <p className="text-gray-700 text-sm">Drop in PDFs, manuals, product guides, and sample screenshots.</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium mb-1">Step 1: Upload Your Knowledge</h3>
+          <p className="text-gray-700 text-sm">Upload installation manuals, troubleshooting guides, and parts catalogs.</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium mb-1">2. Connect your channels</h3>
-          <p className="text-gray-700 text-sm">Add our widget to your site or plug into Zendesk, Intercom, Slack, or email.</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium mb-1">Step 2: Connect Your Channels</h3>
+          <p className="text-gray-700 text-sm">Integrate with your website, email, Slack, Zendesk, and Intercom.</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium mb-1">3. Let AI handle the routine</h3>
-          <p className="text-gray-700 text-sm">Customers type a question or upload a photo and AI finds the answer from your own content.</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium mb-1">Step 3: AI Handles Routine Calls</h3>
+          <p className="text-gray-700 text-sm">Customers ask questions or upload photos. AI finds answers instantly.</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium mb-1">4. Escalate when needed</h3>
-          <p className="text-gray-700 text-sm">If AI can't answer, it routes the ticket (with context) to your human agents.</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium mb-1">Step 4: Escalate When Needed</h3>
+          <p className="text-gray-700 text-sm">Complex issues route to your team with full context.</p>
         </div>
       </div>
     </div>
@@ -343,23 +344,41 @@ const HowItWorksSection = () => (
 );
 
 const BenefitsSection = () => (
-  <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
-    <div className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <div className="text-3xl font-bold text-blue-600 mb-2">70%</div>
-          <div className="text-gray-900 font-medium mb-1">Deflect tickets with AI</div>
-          <div className="text-gray-600 text-sm">trained on your docs</div>
+  <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-blue-600 text-white">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">Why Service Companies Love Snap Question</h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">70%</div>
+          <div className="text-white font-medium mb-2">Deflect tickets</div>
+          <div className="text-blue-100 text-sm">Stop answering the same "How do I…" questions every day.</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <div className="text-3xl font-bold text-blue-600 mb-2">5 sec</div>
-          <div className="text-gray-900 font-medium mb-1">Answer text & screenshots</div>
-          <div className="text-gray-600 text-sm">in seconds, not hours</div>
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">5 sec</div>
+          <div className="text-white font-medium mb-2">Instant troubleshooting</div>
+          <div className="text-blue-100 text-sm">AI finds the answer in your manuals in under 5 seconds.</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <div className="text-3xl font-bold text-blue-600 mb-2">24 hrs</div>
-          <div className="text-gray-900 font-medium mb-1">Go live in under 24 hours</div>
-          <div className="text-gray-600 text-sm">no complex setup</div>
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">Photo</div>
+          <div className="text-white font-medium mb-2">Photo recognition</div>
+          <div className="text-blue-100 text-sm">Customers upload photos of units or parts. AI identifies the fix instantly.</div>
+        </div>
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">24/7</div>
+          <div className="text-white font-medium mb-2">Support availability</div>
+          <div className="text-blue-100 text-sm">Never miss a customer issue, even after hours.</div>
+        </div>
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">24 hrs</div>
+          <div className="text-white font-medium mb-2">Go live fast</div>
+          <div className="text-blue-100 text-sm">No IT headaches. Go live in less than 24 hours.</div>
+        </div>
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+          <div className="text-2xl font-bold text-white mb-2">Quote</div>
+          <div className="text-white font-medium mb-2">Social proof</div>
+          <div className="text-blue-100 text-sm">"We cut our incoming calls in half within 3 weeks. It's like giving every customer a tech in their pocket." Operations Manager, HVAC Co.</div>
         </div>
       </div>
     </div>
@@ -369,19 +388,24 @@ const BenefitsSection = () => (
 const AudienceSection = () => (
   <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gray-50" aria-labelledby="audience-title">
     <div className="max-w-6xl mx-auto">
-      <h2 id="audience-title" className="text-2xl sm:text-3xl md:text-4xl font-light text-center mb-8">Who Snap Question Is For</h2>
+      <h2 id="audience-title" className="text-2xl sm:text-3xl md:text-4xl font-light text-center mb-8">Built for Field Service</h2>
+      <div className="text-center mb-8">
+        <p className="text-gray-700 text-lg max-w-4xl mx-auto">
+          Trusted by HVAC, generator, and kitchen service companies to keep customers happy and trucks rolling.
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium">Field service companies</h3>
-          <div className="text-gray-700 text-sm">HVAC, generators, commercial kitchens</div>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium">HVAC Companies</h3>
+          <div className="text-gray-700 text-sm">Handle installation, maintenance, and troubleshooting questions 24/7</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium">Industrial/parts distributors</h3>
-          <div className="text-gray-700 text-sm">Complex product catalogs and technical specifications</div>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium">Generator Service</h3>
+          <div className="text-gray-700 text-sm">Complex equipment support with photo recognition for parts identification</div>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-gray-900 font-medium">Complex B2B SaaS teams</h3>
-          <div className="text-gray-700 text-sm">Multi-feature platforms with extensive documentation</div>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <h3 className="text-gray-900 font-medium">Kitchen Equipment</h3>
+          <div className="text-gray-700 text-sm">Commercial kitchen equipment troubleshooting and maintenance guides</div>
         </div>
       </div>
     </div>
@@ -491,7 +515,7 @@ const PricingSection = () => {
             Pricing
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-4" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.1)' }}>
-            Public & Simple. Start free - upgrade when you're ready.
+            Save hundreds of labor hours per month.
           </p>
         </div>
 
@@ -709,34 +733,54 @@ const ProductDemoSection = () => {
               ))}
             </div>
 
-            <div className="mt-8 p-4 sm:p-6 bg-gray-100/50 backdrop-blur-sm border border-gray-200 rounded-xl">
-              <h4 className="font-medium text-gray-900 mb-3">Key Features</h4>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>Understands text and image queries</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>Sources answers from your documents</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>Shows confidence scores</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>Escalates complex issues</span>
-                </li>
-              </ul>
+            <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl shadow-sm">
+              <h4 className="font-semibold text-blue-900 mb-4 text-lg">Core Capabilities</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-blue-900 text-sm">Multi-Modal AI</h5>
+                    <p className="text-blue-700 text-xs">Processes text and image queries seamlessly</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-blue-900 text-sm">Document Intelligence</h5>
+                    <p className="text-blue-700 text-xs">Sources precise answers from your knowledge base</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-blue-900 text-sm">Confidence Scoring</h5>
+                    <p className="text-blue-700 text-xs">Shows reliability metrics for every response</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-blue-900 text-sm">Smart Escalation</h5>
+                    <p className="text-blue-700 text-xs">Routes complex issues to human agents with context</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -992,17 +1036,26 @@ const FinalCTASection = () => (
   <section className="py-20 px-4 sm:px-6 md:px-8 bg-blue-600 text-white">
     <div className="max-w-4xl mx-auto text-center">
       <h2 className="text-4xl md:text-5xl font-light mb-6">
-        Stop wasting time on repetitive tickets.
+        Stop Wasting Time on Repeat Tickets
       </h2>
       <p className="text-xl mb-8 opacity-90">
-        Let AI handle the routine so your team can focus on what matters.
+        Let Snap Question handle the routine so your techs can focus on complex jobs.
       </p>
-      <button 
-        className="px-6 py-4 bg-white text-blue-600 rounded-full text-base hover:bg-gray-100 transition-colors font-medium shadow-lg whitespace-nowrap"
-        style={{ boxShadow: '0 0 30px rgba(255, 255, 255, 0.7)' }}
-      >
-        Try Your Manual Now
-      </button>
+      <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+        <button 
+          className="w-full max-w-xs sm:w-auto px-6 py-4 bg-white text-blue-600 rounded-full text-base hover:bg-gray-100 transition-colors font-medium shadow-lg whitespace-nowrap"
+          style={{ boxShadow: '0 0 30px rgba(255, 255, 255, 0.7)' }}
+          onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+        >
+          Book a Demo
+        </button>
+        <button 
+          className="w-full max-w-xs sm:w-auto px-6 py-4 text-white border-2 border-white rounded-full text-base hover:bg-white hover:text-blue-600 transition-colors font-medium whitespace-nowrap"
+          onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+        >
+          Try Your Manual Now
+        </button>
+      </div>
     </div>
   </section>
 );
@@ -1053,9 +1106,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="text-center">
-        <div className="text-gray-700">Contact: <a href="mailto:support@snapquestion.com" className="text-blue-500 hover:text-blue-400">support@snapquestion.com</a></div>
-      </div>
+
     </div>
 
     <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
