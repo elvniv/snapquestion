@@ -1,0 +1,26 @@
+[project]
+name = "snapq-api"
+version = "0.1.0"
+dependencies = [
+  "fastapi==0.110.0",
+  "uvicorn[standard]==0.29.0",
+  "pydantic==2.7.1",
+  "python-multipart==0.0.9",
+  "psycopg[binary]==3.1.19",
+  "redis==5.0.4",
+  "rq==1.16.2",
+  "numpy",
+  "tiktoken",
+  "sentence-transformers",
+  "pytesseract",
+  "pdfminer.six",
+  "python-jose[cryptography]==3.3.0",
+  "httpx==0.27.0",
+  "openai==1.35.0",
+  "pillow==10.3.0"
+]
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

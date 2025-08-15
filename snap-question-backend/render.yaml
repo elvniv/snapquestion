@@ -1,0 +1,83 @@
+services:
+  - type: web
+    name: snapquestion-api
+    runtime: python
+    buildCommand: pip install -e .
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PGHOST
+        fromDatabase:
+          name: snapquestion-db
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: snapquestion-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: snapquestion-db
+          property: database
+      - key: PGUSER
+        fromDatabase:
+          name: snapquestion-db
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: snapquestion-db
+          property: password
+      - key: REDIS_URL
+        fromService:
+          name: snapquestion-redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+
+  - type: worker
+    name: snapquestion-worker
+    runtime: python
+    buildCommand: pip install -e .
+    startCommand: python worker.py
+    envVars:
+      - key: PGHOST
+        fromDatabase:
+          name: snapquestion-db
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: snapquestion-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: snapquestion-db
+          property: database
+      - key: PGUSER
+        fromDatabase:
+          name: snapquestion-db
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: snapquestion-db
+          property: password
+      - key: REDIS_URL
+        fromService:
+          name: snapquestion-redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+
+databases:
+  - name: snapquestion-db
+    plan: starter
+    postgresMajorVersion: 16
+
+services:
+  - type: redis
+    name: snapquestion-redis
+    plan: starter
+    maxmemoryPolicy: allkeys-lru
